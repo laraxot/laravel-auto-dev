@@ -40,12 +40,11 @@ return [
 To execute the make:code command, use:
 
 ```bash
-php artisan make:code --task="Task Name" [--test] [--filament]
+php artisan make:code "Write the task here" [--test] [--filament]
 ```
 
 ### Options
 
-    --task: Describes the task for which to generate code.
     --test: Runs the command in test mode (optional).
     --filament: Uses the Filament library (optional).
 
