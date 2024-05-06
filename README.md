@@ -4,7 +4,15 @@
 
 This Laravel package, `laraxot/laravel-auto-dev`, provides an Artisan command `make:code`, which automates code generation for specific development tasks. It interacts with external APIs to fetch the necessary data and supports options for making tests and Filament resources.
 
-## Installation
+### Install the Server
+
+Before installing the Laravel package, set up the necessary server which hosts the endpoint for code generation. The server can be found and installed from the following repository:
+
+[laravel-auto-dev-server](https://github.com/laraxot/laravel-auto-dev-server)
+
+After setting up the server, proceed with the installation of the Laravel package.
+
+## Package Installation
 
 Install the package using Composer:
 
@@ -12,7 +20,7 @@ Install the package using Composer:
 composer require laraxot/laravel-auto-dev
 ```
 
-After installation, publish and configure the necessary files:
+After installation, you can publish and configure the necessary files:
 
 ```bash
 php artisan vendor:publish --provider="Laraxot\AutoDev\AutoDevServiceProvider"
