@@ -1,0 +1,66 @@
+# Laravel Auto Dev
+
+## Description
+
+This Laravel package, `laraxot/laravel-auto-dev`, provides an Artisan command `make:code`, which automates code generation for specific development tasks. It interacts with external APIs to fetch the necessary data and supports options for making tests and Filament resources.
+
+## Installation
+
+Install the package using Composer:
+
+```bash
+composer require laraxot/laravel-auto-dev
+```
+
+After installation, publish and configure the necessary files:
+
+```bash
+php artisan vendor:publish --provider="Laraxot\AutoDev\AutoDevServiceProvider"
+```
+
+## Optional Configurations
+
+Set the required variables in your .env file:
+
+```plaintext
+API_URL=http://localhost:3000/generate
+API_BASE_DIR=/specify/root/folder
+```
+
+Update the configuration file config/make_code.php with:
+
+```php
+return [
+    'url' => env('MAKE_CODE_URL'),
+];
+```
+
+### Usage
+
+To execute the make:code command, use:
+
+```bash
+php artisan make:code --task="Task Name" [--test] [--filament]
+```
+
+### Options
+
+    --task: Describes the task for which to generate code.
+    --test: Runs the command in test mode (optional).
+    --filament: Uses the Filament library (optional).
+
+### Testing
+
+Run the integrated tests with:
+
+```bash
+php artisan test
+```
+
+### Contributing
+
+Contributions to the project are welcome! Submit a pull request with your changes or open an issue to discuss modifications or additions.
+
+### License
+
+This project is released under the GPL3.0 License.
