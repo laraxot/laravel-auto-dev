@@ -1,0 +1,48 @@
+{
+    "name": "laraxot/laravel-auto-dev",
+    "description": "Automate Laravel development with AI-driven code generation and PHPDoc support",
+    "keywords": [
+        "laravel",
+        "developer-tools",
+        "code-generation",
+        "automation-tools",
+        "rivet"
+    ],
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Laraxot\\LaravelAutoDev\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laraxot\\LaravelAutoDev\\LaravelAutoDevServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Davide Cavallini",
+            "email": "davidecavallini1987@gmail.com",
+            "homepage": "https://www.linkedin.com/in/davidecavallini/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.23|^7.0|^8.0|^9.0",
+        "phpunit/phpunit": "^9.4|^10.1"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "test": "phpunit",
+        "format": "php-cs-fixer fix --allow-risky=yes",
+        "analyse": "phpstan analyse"
+    }
+}
