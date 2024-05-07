@@ -3,7 +3,10 @@
 namespace Laraxot\LaravelAutoDev;
 
 use Illuminate\Support\ServiceProvider;
+use Laraxot\LaravelAutoDev\Console\AiCodeCommand;
 use Laraxot\LaravelAutoDev\Console\MakeCodeCommand;
+use Laraxot\LaravelAutoDev\Console\AiFabricatorCommand;
+use Laraxot\LaravelAutoDev\Console\AiProjectCommand;
 use Laraxot\LaravelAutoDev\Console\MakeFabricatorCodeCommand;
 
 class LaravelAutoDevServiceProvider extends ServiceProvider
@@ -17,8 +20,9 @@ class LaravelAutoDevServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                MakeCodeCommand::class,
-                MakeFabricatorCodeCommand::class,
+                AiCodeCommand::class,
+                AiFabricatorCommand::class,
+                AiProjectCommand::class,
             ]);
 
             $this->publishes([

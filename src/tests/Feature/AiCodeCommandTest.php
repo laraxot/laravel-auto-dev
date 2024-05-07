@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Artisan;
 
-class MakeFabricatorCodeCommandTest extends TestCase
+class AiCodeCommandTest extends TestCase
 {
     /**
      * Test the output of the MakeCodeCommand.
      *
      * @return void
      */
-    public function testMakeFabricatorCodeCommand()
+    public function testAiCodeCommand()
     {
         Http::fake([
             '*' => Http::response(['value' => [
@@ -22,19 +22,23 @@ class MakeFabricatorCodeCommandTest extends TestCase
             ]], 200)
         ]);
 
-        Artisan::call('make:fabricator-code', [
-            'file' => 'extras/testBlock.html'
+        Artisan::call('ai:code', [
+            'task' => 'Generate code for example task',
+            '--test' => true,
+            '--filament' => true
         ]);
 
         $output = Artisan::output();
         
         // Check if the command output indicates successful execution
-        $this->assertStringContainsString('Filament Fabricator code files saved successfully!', $output);
+        $this->assertStringContainsString('Files saved successfully!', $output);
         
         // Ensure that the API was called with the correct data
         Http::assertSent(function ($request) {
-            return $request->url() == Config::get('make_code.url')."/filament-fabricator-block-maker" &&
-                   $request['html'] == '<div>Test</div>';
+            return $request->url() == Config::get('make_code.url')."/task-generator" &&
+                   $request['task'] == 'Generate code for example task' &&
+                   $request['test'] === true &&
+                   $request['filament'] === true;
         });
     }
 }

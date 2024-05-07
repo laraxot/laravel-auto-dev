@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
-class MakeFabricatorCodeCommand extends Command
+class AiFabricatorCommand extends Command
 {
-    protected $signature = 'make:fabricator-code {file : Path to the HTML file to process}';
+    protected $signature = 'ai:fabricator {file : Path to the HTML file to process}';
     protected $description = 'Generate Filament Fabricator code from an HTML file';
 
     public function handle(): void

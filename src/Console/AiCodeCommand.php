@@ -6,9 +6,9 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Config;
 
-class MakeCodeCommand extends Command
+class AiCodeCommand extends Command
 {
-    protected $signature = 'make:code {task : Description of the task to generate code for} 
+    protected $signature = 'ai:code {task : Description of the task to generate code for} 
                                          {--test : Generate test files} 
                                          {--filament : Generate Filament panels}';
     protected $description = 'Automate Laravel development with AI-driven code generation and PHPDoc support';
