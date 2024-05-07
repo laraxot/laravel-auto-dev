@@ -25,6 +25,8 @@ class MakeCodeCommand extends Command
          */
         $apiUrl = Config::get('make_code.url');
 
+        $apiUrl .= "/task-generator";
+
         // Preparing data to be sent to the API
         $postData = [
             'task' => $this->argument('task'),

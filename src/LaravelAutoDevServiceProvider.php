@@ -4,6 +4,7 @@ namespace Laraxot\LaravelAutoDev;
 
 use Illuminate\Support\ServiceProvider;
 use Laraxot\LaravelAutoDev\Console\MakeCodeCommand;
+use Laraxot\LaravelAutoDev\Console\MakeFabricatorCodeCommand;
 
 class LaravelAutoDevServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,7 @@ class LaravelAutoDevServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 MakeCodeCommand::class,
+                MakeFabricatorCodeCommand::class,
             ]);
 
             $this->publishes([
