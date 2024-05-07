@@ -22,7 +22,6 @@ class LaravelAutoDevServiceProvider extends ServiceProvider
             $this->commands([
                 AiCodeCommand::class,
                 AiFabricatorCommand::class,
-                AiProjectCommand::class,
             ]);
 
             $this->publishes([
