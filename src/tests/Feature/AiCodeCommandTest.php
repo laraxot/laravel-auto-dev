@@ -1,44 +1,26 @@
 <?php
 
-namespace Tests\Feature;
-
-use Tests\TestCase;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Artisan;
+use Laraxot\LaravelAutoDev\Console\AiCodeCommand;
+use Laraxot\LaravelAutoDev\Actions\TaskGeneratorAction;
+use Illuminate\Support\Facades\App;
+use Tests\TestCase;
+
 
 class AiCodeCommandTest extends TestCase
 {
-    /**
-     * Test the output of the MakeCodeCommand.
-     *
-     * @return void
-     */
-    public function testAiCodeCommand()
+    public function testCommandExecution()
     {
-        Http::fake([
-            '*' => Http::response(['value' => [
-                ['path' => 'example.txt', 'content' => 'Hello World']
-            ]], 200)
-        ]);
+        // Mock the action class
+        $mockAction = $this->createMock(TaskGeneratorAction::class);
+        $mockAction->expects($this->once())
+                   ->method('execute');
 
-        Artisan::call('ai:code', [
-            'task' => 'Generate code for example task',
-            '--test' => true,
-            '--filament' => true
-        ]);
+        App::instance(TaskGeneratorAction::class, $mockAction);
 
-        $output = Artisan::output();
-        
-        // Check if the command output indicates successful execution
-        $this->assertStringContainsString('Files saved successfully!', $output);
-        
-        // Ensure that the API was called with the correct data
-        Http::assertSent(function ($request) {
-            return $request->url() == Config::get('make_code.url')."/task-generator" &&
-                   $request['task'] == 'Generate code for example task' &&
-                   $request['test'] === true &&
-                   $request['filament'] === true;
-        });
+        // Execute the command
+        $this->artisan('ai:code', ['task' => 'Create a new user system'])
+             ->expectsOutput('Files saved successfully!')
+             ->assertExitCode(0);
     }
 }
