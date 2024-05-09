@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class AiCodeCommandTest extends TestCase
 {
-    public function testCommandExecution()
+    public function testCommandExecution():void
     {
         // Mock the action class
         $mockAction = $this->createMock(TaskGeneratorAction::class);

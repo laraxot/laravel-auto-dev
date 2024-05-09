@@ -15,7 +15,7 @@ class TaskGeneratorAction
 
     public function execute(TaskGeneratorData $data): void
     {
-        $apiUrl = Config::get('make_code.url') . "/task-generator";
+        $apiUrl = Config::get('laravel_auto_dev.url') . "/task-generator";
         $postData = [
             'task' => $data->task,
             'test' => $data->test,
@@ -37,7 +37,7 @@ class TaskGeneratorAction
 
     protected function saveToFile(string $filePath, string $content): void
     {
-        $baseDir = Config::get('make_code.base_dir');
+        $baseDir = Config::get('laravel_auto_dev.base_dir');
         $fullPath = $baseDir . '/' . $filePath;
         if (!file_exists(dirname($fullPath))) {
             mkdir(dirname($fullPath), 0777, true);

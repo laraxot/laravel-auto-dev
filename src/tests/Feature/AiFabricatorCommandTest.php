@@ -33,7 +33,7 @@ class AiFabricatorCommandTest extends TestCase
         
         // Ensure that the API was called with the correct data
         Http::assertSent(function ($request) {
-            return $request->url() == Config::get('make_code.url')."/filament-fabricator-block-maker" &&
+            return $request->url() == Config::get('laravel_auto_dev.url')."/filament-fabricator-block-maker" &&
                    $request['html'] == '<div>Test</div>';
         });
     }

@@ -13,11 +13,11 @@ class TaskGeneratorActionTest extends TestCase
     {
         parent::setUp();
         Config::shouldReceive('get')
-              ->with('make_code.url')
+              ->with('laravel_auto_dev.url')
               ->andReturn('http://example.com/api');
 
         Config::shouldReceive('get')
-              ->with('make_code.base_dir')
+              ->with('laravel_auto_dev.base_dir')
               ->andReturn('/var/www/html/generated-files');
     }
 
@@ -35,7 +35,7 @@ class TaskGeneratorActionTest extends TestCase
         // Assertions to ensure files are created, etc.
     }*/
 
-    public function testHttpRequestErrors()
+    public function testHttpRequestErrors():void
     {
         Http::fake([
             'http://example.com/api/task-generator' => Http::response([], 500)

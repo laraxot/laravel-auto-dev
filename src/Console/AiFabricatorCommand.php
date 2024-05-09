@@ -22,9 +22,9 @@ class AiFabricatorCommand extends Command
 
         $htmlContent = File::get($filePath);
 
-        $baseDir = Config::get('make_code.base_dir');  // Uses the same base directory configuration as make-code.php
+        $baseDir = Config::get('laravel_auto_dev.base_dir');  // Uses the same base directory configuration as make-code.php
         
-        $apiUrl = Config::get('make_code.url');        // Reuses the same API URL configuration
+        $apiUrl = Config::get('laravel_auto_dev.url');        // Reuses the same API URL configuration
 
         $apiUrl .= "/filament-fabricator-block-maker";
 

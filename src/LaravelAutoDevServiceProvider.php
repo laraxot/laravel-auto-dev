@@ -13,7 +13,7 @@ class LaravelAutoDevServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config/make_code.php', 'make_code');
+        $this->mergeConfigFrom(__DIR__.'/config/laravel_auto_dev.php', 'laravel_auto_dev');
     }
 
     public function boot(): void
@@ -22,11 +22,11 @@ class LaravelAutoDevServiceProvider extends ServiceProvider
             $this->commands([
                 AiCodeCommand::class,
                 AiFabricatorCommand::class,
-                //AiProjectCommand::class
+                AiProjectCommand::class
             ]);
 
             $this->publishes([
-                __DIR__.'/config/make_code.php' => config_path('make_code.php'),
+                __DIR__.'/config/laravel_auto_dev.php' => config_path('laravel_auto_dev.php'),
             ]);
         }
     }
